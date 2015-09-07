@@ -1,0 +1,96 @@
+kindskipx=0.5
+linkshiftx=1.1
+defcolor gr1 1 1 1
+defcolor gr2 2 2 2
+defcolor gr3 3 3 3
+defcolor gr4 4 4 4
+defcolor gr5 5 5 5
+defcolor gr6 6 6 6
+defcolor gr7 7 7 7
+defcolor gr8 8 8 8
+defcolor gr9 9 9 9
+kind "B.pertussis" 2
+rgene "BpeTORF204P" 1000 white
+rgene "BP0204" 500 white
+rgene "BP0206" 3000 white
+skip "160 kb" 3
+rgene "" 200 white
+rgene "M.BpeTORF740P" 3000 white
+kind "B.bronchiseptica" 3
+gene "BB0304" 3000 white
+gene "BB0306" 500 white
+gene "BbrRORF307P" 1000 white
+rgene "M.BbrRORF307P" 3000 white
+link "BpeTORF204P" "BbrRORF307P"
+link "BP0204" "BB0306"
+link "BP0206" "BB0304"
+link "M.BpeTORF740P" "M.BbrRORF307P"
+
+kind "Acidovorax sp. JS42" 4
+gene "M.AspJSORF2196P" 1000 white 
+gene "V.AspJSORF2196P" 500 white
+gene "Ajs_2198" 3000 white
+gene "AspJSORF2199AP" 2000 white
+gene "AspJSORF2202P" 1500 white
+rgene "" 1000 white
+gene "AspJSORF2199BP" 1500 white
+gene "AspJSORF2202P" 1500 white
+
+kind "V.eiseniae EF01-2" 3
+gene "M.VeiORF1175P" 1000 white
+gene "V.VeiORF1175P" 500 white
+gene "Veis_1177" 2000 white
+gene "" 1000 white
+gene "VeiORF1179P" 2000 white
+gene "" 1000 white
+gene "" 1000 white
+gene "VeiORF1182P" 1000 white
+
+link "M.AspJSORF2196P" "M.VeiORF1175P"
+link "V.AspJSORF2196P" "V.VeiORF1175P"
+link "Ajs_2198" "Veis_1177"
+link "AspJSORF2202P" "VeiORF1182P"
+
+kind "S.fumaroxidans MPOB" 3
+gene "M.SfuMORF3845P" 1000 white
+gene "Sfum_3845" 2000 white
+gene "SfuMORF3847P" 2000 white
+gene "" 200
+gene "" 300
+gene "" 1000
+gene "" 300
+gene "" 200
+gene "SfuMORF3853P" 1000 white
+gene "V.SfuMORF3853P" 500 white
+
+link "V.VeiORF1175P" "V.SfuMORF3853P"
+link "M.VeiORF1175P" "M.SfuMORF3845P"
+link "Veis_1177" "Sfum_3845" 
+link "VeiORF1179P" "SfuMORF3847P"
+link "VeiORF1182P" "SfuMORF3853P"
+
+kind "D.baarsii DSM2075" 3
+gene "M.DbaKORF2578P" 1000 white
+gene "Deba_2577" 2000 white
+gene "" 300 white
+gene "DbaKORF2575P" 2000 white
+gene "" 1000 white
+gene "" 700 white
+gene "" 300 white
+gene "DbaKORF2578P" 2000 white 
+gene "V.DbaKORF2578P" 500 white 
+
+link "M.SfuMORF3845P" "M.DbaKORF2578P"
+link "Sfum_3845" "Deba_2577"
+link "SfuMORF3847P" "DbaKORF2575P"
+link "SfuMORF3853P" "DbaKORF2578P"
+link "V.SfuMORF3853P" "V.DbaKORF2578P"
+
+kind "R. vannielii" 3
+gene "M.RvaDORF1484P" 1000 white
+gene "RvaDORF1484P" 2000 white
+gene "V.RvaDORF1484P" 500 white
+
+link "M.DbaKORF2578P" "M.RvaDORF1484P"
+link "DbaKORF2578P" "RvaDORF1484P"
+link "V.DbaKORF2578P" "V.RvaDORF1484P"

@@ -1,0 +1,21 @@
+defcolor gr1 5 5 5
+defcolor gr2 7 7 7
+defcolor gr3 2 2 2
+kindskipx=0.5
+kind "Kind 2" 2
+gene "Kind 2 gene1" 1000 gr1
+gene "kind1Gene2" 1300 gr2
+gene "kind1Gene3" 1000 gr1
+kind "TestKind2asdadsas" 3
+gene "kind2Gene1" 1000 gr3
+gene "kind2Gene2" 3000 gr2
+gene "kind2Gene3" 1000 gr1
+kind "TestKind3" 2
+gene "kind3Gene1" 1000 gr3
+gene "kind3Gene2" 3000 gr2
+skip "160 k" 2
+gene "kind3Gene3" 1000 gr1
+gene "" 1000 gr1
+link "Kind 2 gene1" "kind2Gene2"
+link "kind1Gene3" "kind2Gene1"
+link "kind2Gene3" "kind3Gene1"

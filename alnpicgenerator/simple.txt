@@ -1,0 +1,16 @@
+kind "B.pertussis" 2
+rgene "BpeTORF204P" 1000 white
+rgene "BP0204" 500 white
+rgene "BP0206" 3000 white
+skip "160 kb" 3
+rgene "" 200 white
+rgene "M.BpeTORF740P" 3000 white
+kind "B.bronchiseptica" 3
+gene "BB0304" 3000 white
+gene "BB0306" 500 white
+gene "BbrRORF307P" 1000 white
+rgene "M.BbrRORF307P" 3000 white
+link "BpeTORF204P" "BbrRORF307P"
+link "BP0204" "BB0306"
+link "BP0206" "BB0304"
+link "M.BpeTORF740P" "M.BbrRORF307P"
