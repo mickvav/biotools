@@ -1,4 +1,4 @@
-* Disclaimer
+# Disclaimer #
 
 This small piece of code is intended to solve linear regression problems by numpy.linalg.lstsq method.
 Usage:
