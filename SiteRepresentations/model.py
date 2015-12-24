@@ -109,8 +109,26 @@ print("Coefficient of determination: "+str(Rsq))
 #
 ##
 
+Ysum={}
+nsum={}
+predsum={}
 
+for i in range(0,len(pred)-1):
+    s=','.join(str(x) for x in A[i])
+    predsum[s]=pred[i]
+    if s in Ysum:
+        Ysum[s]+=B[i]
+        nsum[s]+=1
+    else:
+        Ysum[s]=B[i]
+        nsum[s]=1
+SSlf=0
+for key in Ysum.keys():
+    SSlf+=nsum[key]*(Ysum[key]/nsum[key]-predsum[key])**2
 
+print("lf/res="+str(SSlf/SSres))
+    
+     
 f.close()
 g.close()
 h.close()
