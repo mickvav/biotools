@@ -6,6 +6,7 @@ import sys
 ## 
 f=open(sys.argv[1],'r')
 g=open(sys.argv[2],'w')
+g.write("chr"+"\t"+"pos"+"\t"+"#all reads on direct chain"+"\t"+"#all reads on reverse chain"+"\t"+"#all reads, which starts in the position"+"\t"+"#total number of reads in the position"+"\n")
 ops={}
 dops={}
 ops['+-']={}
