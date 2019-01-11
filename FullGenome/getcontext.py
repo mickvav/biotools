@@ -51,16 +51,16 @@ class FullGenome:
             self.loaded_contexts[context]=self.load_context(f)
             f.close()
         d=self.loaded_contexts[context][nchr][-1]
-        idx=0
         positions=self.loaded_contexts[context][nchr]
+        idx=positions[0]
         for i in positions:
             current_distance=abs(i-position)
             if(d>current_distance and current_distance>0):
                 idx=i
                 d=current_distance
             else:
-                break
-        return idx
+                return idx
+        return positions[-1]
 
     def load_context(self,f):
         """
