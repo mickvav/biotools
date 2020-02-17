@@ -9,3 +9,5 @@ Hint - we need u and v files at whatever precision is needed.
 
 Original data sources DO NOT STORE MODEL RESULTS FOR A LONG TIME
 If you need data for further analyzis - keep it yourself.
+
+Script also expects file with Lattitude, Longitude and depths of points of interest.
