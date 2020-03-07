@@ -5,7 +5,9 @@ for i in *.reference.contig.fasta; do
     errs=`grep $ers ~/err-ers | awk '{print $3;}'`
     for j in $errs; do 
 	for f in /mnt/data/tara_ocean/$j*; do 
-	     ln -s $f found-errs/$ers/; 
+	     if [ -f $f ]; then
+    	         ln -s $f found-errs/$ers/; 
+	     fi
         done
     done
 done
