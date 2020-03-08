@@ -24,8 +24,13 @@ def process_pair(file1, file2, err, ers):
     if exists(f"{ers}.all.{err}.sam"):
         print(f"{ers}.all.{err}.sam already exists. skipping")
         return
-    system(f"{bowtie2} --no-unal --met-file {metfile} --threads 2 -x {ers}.reference.contig -1 {file1} -2 {file2} -S {ers}.all.{err}.sam")
-    system(f"samtools view -b -o {ers}.all.{err}.bam {ers}.all.{err}.sam")
+    system(f"touch {ers}.all.{err}.sam")
+    system(f"cp {ers}.reference.contig* /dev/shm/")
+    system(f"{bowtie2} --no-unal --threads 1 -x /dev/shm/{ers}.reference.contig -1 {file1} -2 {file2} -S /home/ubuntu/{ers}.all.{err}.sam")
+    system(f"rm /dev/shm/{ers}.reference.contig*")
+    system(f"samtools view -b -o {ers}.all.{err}.bam /home/ubuntu/{ers}.all.{err}.sam")
+    system(f"rm /home/ubuntu/{ers}.all.{err}.sam")
+
 
 ers_err = read_erserr(argv[1])
 for ers in ers_err:

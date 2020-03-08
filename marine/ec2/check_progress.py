@@ -5,7 +5,7 @@ import re
 from os import stat, readlink
 from time import sleep
 from sys import argv
-if argv[1]:
+if len(argv)>1:
     interval=float(argv[1])
 else:
     interval=5
@@ -33,12 +33,14 @@ for line in lines.split("\n"):
 
 sleep(interval)
 perf = 0
+print("Pid BPS     ETA[s]")
 for line in lines.split("\n"):
     try:
         (pid, pts, time, name) = re.split("\s+",line.strip())
         (s1,s2,p1,p2) = bowtie_pid_progress(pid)
         pr= p1+p2
-        print(pid, (pr-state[pid])/interval)
+        eta = (s1 + s2 - p1 - p2) * interval / (pr-state[pid])
+        print(pid, (pr-state[pid])/interval, eta )
         perf += (pr-state[pid])/interval
     except Exception as ee:
         pass
