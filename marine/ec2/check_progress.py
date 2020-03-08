@@ -24,7 +24,7 @@ lines = subprocess.check_output('ps -A | grep bowtie2-align-s', shell=True, univ
 state = {}
 for line in lines.split("\n"):
     try:
-        (pid, pts, time, name) = re.split("\s+",line)
+        (pid, pts, time, name) = re.split("\s+",line.strip())
         (s1,s2,p1,p2) = bowtie_pid_progress(pid)
         print(pid, pts, 50*(p1/s1+p2/s2), readlink(f"/proc/{pid}/fd/3"))
         state[pid] = p1 + p2
@@ -35,7 +35,7 @@ sleep(interval)
 perf = 0
 for line in lines.split("\n"):
     try:
-        (pid, pts, time, name) = re.split("\s+",line)
+        (pid, pts, time, name) = re.split("\s+",line.strip())
         (s1,s2,p1,p2) = bowtie_pid_progress(pid)
         pr= p1+p2
         print(pid, (pr-state[pid])/interval)
