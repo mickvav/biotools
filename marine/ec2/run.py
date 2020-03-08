@@ -8,6 +8,7 @@ from collections import defaultdict
 import re
 
 bowtie2="/home/ubuntu/bowtie2-2.4.1-linux-x86_64/bowtie2"
+stop_flag="/home/ubuntu/stop"
 
 def read_erserr(filename) -> Dict[str, List[str]]:
     result = defaultdict(list)
@@ -29,10 +30,12 @@ def process_pair(file1, file2, err, ers):
 ers_err = read_erserr(argv[1])
 for ers in ers_err:
     for err in ers_err[ers]:
+        if exists(stop_flag):
+            print(f"Stop flag found. Exiting. Remove {stop_flag} before next run.")
+            raise RuntimeError("Stop")
         file1=f"found-errs/{ers}/{err}_1.fastq.gz"
         file2=f"found-errs/{ers}/{err}_2.fastq.gz"
         if exists(file1) and exists(file2):
             print(f"Processing {file1} {file2}")
             process_pair(file1, file2, err, ers)
-
 
