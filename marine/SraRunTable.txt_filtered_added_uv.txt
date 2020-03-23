@@ -1,0 +1,2 @@
+Run,sample_name,Depth,Latitude_Start,Longitude_Start,Depth_uv,Lat_uv,Lng_uv,Distance,u,v,u1,v1
+ERR1701760,ERS488919,25,18.5839,66.4727,20.0,0,0,4.139336783269484,0.197848,-0.113949,0.122786,-0.000670016

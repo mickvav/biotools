@@ -6,10 +6,12 @@ import netCDF4
 import numpy as np
 from functools import lru_cache
 from math import radians, degrees, sin, cos, asin, acos, sqrt
+from sys import argv
 
-
-fu = netCDF4.Dataset('../rtofs_glo_3dz_f024_daily_3zuio.nc')
-fv = netCDF4.Dataset('../rtofs_glo_3dz_f024_daily_3zvio.nc')
+fu = netCDF4.Dataset('data/rtofs_glo_3dz_f024_daily_3zuio.nc')
+fv = netCDF4.Dataset('data/rtofs_glo_3dz_f024_daily_3zvio.nc')
+fu1 = netCDF4.Dataset('data/rtofs_glo_3dz_f048_daily_3zuio.nc')
+fv1 = netCDF4.Dataset('data/rtofs_glo_3dz_f048_daily_3zvio.nc')
 
 
 fu_x = fu.variables['X']
@@ -91,10 +93,10 @@ def find_stupid(lat, lng, depth, step):
                 lngs = 0
     return (dis, xs, ys, ds, lats, lngs, Distance )
 
-f=open("SraRunTable.txt_filtered.txt", "r")
-g=open("SraRunTable.txt_filtered_added_uv.txt", "w")
+f=open(argv[1], "r")
+g=open(argv[1]+"_added_uv.txt", "w")
 header = f.readline().strip().split(",")
-new_header = header + ["Depth_uv","Lat_uv","Lng_uv", "Distance", "u", "v"]
+new_header = header + ["Depth_uv","Lat_uv","Lng_uv", "Distance", "u", "v", "u1", "v1"]
 g.write(",".join(new_header) + "\n")
 
 for line in f.readlines():
@@ -111,14 +113,16 @@ for line in f.readlines():
         continue
     u=fu.variables['u'][0,dis,xs,ys]
     v=fv.variables['v'][0,dis,xs,ys]
+    u1=fu1.variables['u'][0,dis,xs,ys]
+    v1=fv1.variables['v'][0,dis,xs,ys]
     d["Depth_uv"] = str(fu.variables["Depth"][dis])
     d["Lat_uv"] = str(lats)
     d["Lng_uv"] = str(lngs)
     d["Distance"] = str(Distance)
     d["u"] = str(u)
     d["v"] = str(v)
+    d["u1"] = str(u1)
+    d["v1"] = str(v1)
     line1 = ",".join([d[i] for i in new_header]) + "\n"
     print(line1)
-    g.write(line1)
-
-    
+    g.write(line1) 
