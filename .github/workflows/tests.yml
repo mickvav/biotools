@@ -1,0 +1,8 @@
+name: GitHub run tests
+on: [push, pulll_request, workflow_call]
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: python3 -m unittest discover -s tests
+        
