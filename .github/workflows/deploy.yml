@@ -9,5 +9,5 @@ jobs:
           echo "{{ secrets.PRIVATE_KEY }}" > identity
           echo "::warning:: Going to oc2"
           ssh -i identity "{{secrets.USERNAME}}@{{secrets.HOSTNAME}}" "rm -rf biotools.bak; mv biotools biotools.bak; git clone git@github.com:mickvav/biotools.git"
-      - post: rm identity
+        post: rm identity
 
