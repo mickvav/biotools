@@ -4,5 +4,6 @@ jobs:
   run_tests:
     runs-on: ubuntu-latest
     steps:
+      - run: ls -la
       - run: python3 -m unittest discover tests/ 'test_*.py'
         
