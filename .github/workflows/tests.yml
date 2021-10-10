@@ -5,6 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: ls -la
       - run: python3 -m unittest discover tests/ 'test_*.py'
         
