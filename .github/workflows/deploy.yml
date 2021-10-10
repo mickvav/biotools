@@ -1,9 +1,12 @@
 name: Deploy to single host in oracle cloud
 on: [push]
 jobs:
+  tests:
+    uses: mickvav/biotools/.github/workflows/tests.yml@master
+
   deploy:
     runs-on: ubuntu-latest
-    uses: mickvav/biotools/.github/workflows/tests.yml@master
+    needs: tests
     steps:
       - name: Do ssh magic
         env:
