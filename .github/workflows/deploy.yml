@@ -1,10 +1,10 @@
 name: Deploy to single host in oracle cloud
 on: [push]
+uses: mickvav/biotools/.github/workflows/tests.yml@master
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: mickvav/biotools/.github/workflows/tests.yml@master
       - run: | 
           echo "{{ secrets.PRIVATE_KEY }}" > identity
           echo "::warning:: Going to oc2"
