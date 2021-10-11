@@ -16,10 +16,11 @@ jobs:
           secrets_username: ${{ secrets.USERNAME }}
           secrets_hostname: ${{ secrets.HOSTNAME }}
         run: | 
+          echo "::warning:: Landing private key"
           echo $secrets_private_key > identity
           chmod 0600 identity
-          echo "::warning:: Going to oc2"
           ls -la identity
+          echo "::warning:: Going to oc2"
           ssh -i identity -o "StrictHostKeyChecking=no" "${secrets_username}@${secrets_hostname}" 'rm -rf biotools.bak; mv biotools biotools.bak; git clone git@github.com:mickvav/biotools.git'
       - uses: webiny/action-post-run@2.0.1
         id: post-run-command
