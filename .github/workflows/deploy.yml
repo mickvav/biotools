@@ -9,10 +9,11 @@ jobs:
     needs: tests
     steps:
       - name: Do ssh magic
+        shell: bash
         env:
-          secrets_private_key: ${{secrets.PRIVATE_KEY}}
-          secrets_username: ${{secrets.USERNAME}}
-          secrets_hostname: ${{secrets.HOSTNAME}}
+          secrets_private_key: ${{ secrets.PRIVATE_KEY }}
+          secrets_username: ${{ secrets.USERNAME }}
+          secrets_hostname: ${{ secrets.HOSTNAME }}
         run: | 
           echo $secrets_private_key > identity
           echo "::warning:: Going to oc2"
