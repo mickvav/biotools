@@ -19,7 +19,7 @@ jobs:
           echo $secrets_private_key > identity
           echo "::warning:: Going to oc2"
           ls -la identity
-          ssh -i identity "${secrets_username}@${secrets_hostname}" "rm -rf biotools.bak; mv biotools biotools.bak; git clone git@github.com:mickvav/biotools.git"
+          ssh -i identity "${secrets_username}@${secrets_hostname}" 'rm -rf biotools.bak; mv biotools biotools.bak; git clone git@github.com:mickvav/biotools.git'
       - uses: webiny/action-post-run@2.0.1
         id: post-run-command
         with:
