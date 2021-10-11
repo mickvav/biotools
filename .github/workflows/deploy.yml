@@ -17,7 +17,7 @@ jobs:
           secrets_hostname: ${{ secrets.HOSTNAME }}
         run: | 
           echo $secrets_private_key > identity
-          chmode 0600 identity
+          chmod 0600 identity
           echo "::warning:: Going to oc2"
           ls -la identity
           ssh -i identity -o "StrictHostKeyChecking=no" "${secrets_username}@${secrets_hostname}" 'rm -rf biotools.bak; mv biotools biotools.bak; git clone git@github.com:mickvav/biotools.git'
