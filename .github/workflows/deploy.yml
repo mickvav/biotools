@@ -17,7 +17,7 @@ jobs:
           secrets_hostname: ${{ secrets.HOSTNAME }}
         run: | 
           echo "::warning:: Landing private key"
-          echo $secrets_private_key > identity
+          echo $secrets_private_key | base64 -di | gzip -dc > identity
           chmod 0600 identity
           ls -la identity
           md5sum identity
